@@ -23,6 +23,8 @@ export default class TliMiddleSection extends Component {
   }
 
   <template>
+    {{raw "topic-status" topic=this.topic}}
+
     <div class="tli-middle-section">
       {{#if this.topic.hasExcerpt}}
         <div class="topic-excerpt">
@@ -34,17 +36,28 @@ export default class TliMiddleSection extends Component {
           </a>
         </div>
       {{/if}}
-      {{#if this.topic.image_url}}
-        <a href="{{this.topic.lastUnreadUrl}}">
-          <div class="topic-image">
-            {{#if settings.topic_image_backdrop}}
-              <div class="topic-image__backdrop" style={{this.topicBackgroundStyle}} loading="lazy"></div>
-            {{/if}}
-            <img src="{{this.topic.image_url}}" class="topic-image__img" loading="lazy">
-          </div>
-        </a>
-      {{/if}}
-      {{discourseTags this.topic mode="list" tagsForUser=@tagsForUser}}
+      <div id={{if this.topic.hasExcerpt "link-middle-line-excerpt" undefined}} class="link-middle-line">
+        <div class="topic-title">
+          {{raw-plugin-outlet name="topic-list-after-title"}}
+          {{#if this.topic.featured_link}}
+            {{raw "topic-featured-link" topic=this.topic}}
+          {{/if}}
+          {{#if this.args.outletArgs.showTopicPostBadges}}
+            {{raw "topic-post-badges" unreadPosts=this.topic.unread_posts unseen=this.topic.unseen url=this.topic.lastUnreadUrl newDotText=this.args.outletArgs.newDotText}}
+          {{/if}}
+          {{discourseTags this.topic mode="list" tagsForUser=@tagsForUser}}
+        </div>
+        {{#if this.topic.image_url}}
+          <a href="{{this.topic.lastUnreadUrl}}">
+            <div class="topic-image">
+              {{#if (theme-setting "topic_image_backdrop")}}
+                <div class="topic-image__backdrop" style={{this.topicBackgroundStyle}} loading="lazy"></div>
+              {{/if}}
+              <img src="{{this.topic.image_url}}" class="topic-image__img" loading="lazy">
+            </div>
+          </a>
+        {{/if}}
+      </div>
     </div>
   
     <div class="tli-bottom-section">
