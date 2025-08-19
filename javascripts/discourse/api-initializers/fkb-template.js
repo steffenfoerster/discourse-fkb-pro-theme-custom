@@ -1,6 +1,6 @@
 import { apiInitializer } from "discourse/lib/api";
-// Temporarily comment out imports to test basic loading
-// import TliTopSection from "../components/topic-list-item/tli-top-section";
+// Test importing just one component first
+import TliTopSection from "../components/topic-list-item/tli-top-section";
 // import TliMiddleSection from "../components/topic-list-item/tli-middle-section";
 
 export default apiInitializer("1.8.0", (api) => {
@@ -25,13 +25,12 @@ export default apiInitializer("1.8.0", (api) => {
       return columns;
     });
 
-    // Temporarily comment out custom component rendering
-    /*
+    // Test rendering just the top section component
     if (!settings.disable_topic_list_modification) {
+      console.log("FKB Theme: Attempting to render TliTopSection");
       api.renderInOutlet("topic-list-before-link", TliTopSection);
-      api.renderInOutlet("topic-list-main-link-bottom", TliMiddleSection);
+      // api.renderInOutlet("topic-list-main-link-bottom", TliMiddleSection);
     }
-    */
   }
 
   api.modifyClass("component:discovery/topics", (Superclass) =>
