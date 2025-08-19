@@ -3,23 +3,11 @@ import TliTopSection from "../components/topic-list-item/tli-top-section";
 import TliMiddleSection from "../components/topic-list-item/tli-middle-section";
 
 export default apiInitializer("1.8.0", (api) => {
-  // try to get site service safely
-  let site;
-  try {
-    site = api.getCurrentUser()?.site;
-    if (!site && api.container) {
-      site = api.container.lookup("service:site");
-    }
-    if (!site && api.lookup) {
-      site = api.lookup("service:site");
-    }
-  } catch (e) {
-    // fallback if all methods fail
-    site = { useGlimmerTopicList: true };
-  }
+  // Assume Glimmer topic list is enabled in modern Discourse
+  const useGlimmerTopicList = true;
 
   // Glimmer topic list is the default now
-  if (site?.useGlimmerTopicList) {
+  if (useGlimmerTopicList) {
     if (!settings.disable_topic_list_modification) {
       api.registerValueTransformer("topic-list-item-mobile-layout", () => false);
     }

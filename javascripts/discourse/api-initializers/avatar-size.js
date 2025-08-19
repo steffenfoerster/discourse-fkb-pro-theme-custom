@@ -1,22 +1,11 @@
 import { apiInitializer } from "discourse/lib/api";
 
 export default apiInitializer("1.8.0", (api) => {
-  let site;
-  try {
-    site = api.getCurrentUser()?.site;
-    if (!site && api.container) {
-      site = api.container.lookup("service:site");
-    }
-    if (!site && api.lookup) {
-      site = api.lookup("service:site");
-    }
-  } catch (e) {
-    // assume desktop if we can't determine
-    site = { mobileView: false };
-  }
+  // Widget overrides are deprecated in Discourse 3.5+
+  // Avatar sizing is now handled by CSS or core components
   
-  // Change avatar size on desktop
-  if (site && !site.mobileView) {
-    api.changeWidgetSetting("post-avatar", "size", 60);
-  }
+  // Uncomment below if you need custom avatar sizing via CSS
+  // api.onPageChange(() => {
+  //   document.documentElement.style.setProperty('--avatar-size-large', '60px');
+  // });
 });

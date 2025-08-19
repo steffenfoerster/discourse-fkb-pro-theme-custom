@@ -5,20 +5,9 @@ import { getURLWithCDN } from "discourse-common/lib/get-url";
 export default {
   setupComponent(attrs, component) {
     withPluginApi("0.8.7", (api) => {
-      let site;
-      try {
-        site = api.getCurrentUser()?.site;
-        if (!site && api.container) {
-          site = api.container.lookup("service:site");
-        }
-        if (!site && api.lookup) {
-          site = api.lookup("service:site");
-        }
-      } catch (e) {
-        // assume desktop if we can't determine
-        site = { mobileView: false };
-      }
-      if (!site?.mobileView) {
+      // Only run on desktop - assume desktop if we can't determine
+      const isDesktop = window.innerWidth > 768; // Basic desktop detection
+      if (isDesktop) {
         // only run for logged-in users
         const current = api.getCurrentUser();
         if (!current) return;

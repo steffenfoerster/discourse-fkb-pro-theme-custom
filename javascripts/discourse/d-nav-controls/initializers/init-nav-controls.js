@@ -5,20 +5,9 @@ export default {
 
   initialize() {
     withPluginApi("0.8.13", (api) => {
-      let site;
-      try {
-        site = api.getCurrentUser()?.site;
-        if (!site && api.container) {
-          site = api.container.lookup("service:site");
-        }
-        if (!site && api.lookup) {
-          site = api.lookup("service:site");
-        }
-      } catch (e) {
-        // assume desktop if we can't determine
-        site = { mobileView: false };
-      }
-      if (!site || !site.mobileView) return;
+      // Only run on mobile - assume desktop if we can't determine
+      const isMobile = window.innerWidth <= 768; // Basic mobile detection
+      if (!isMobile) return;
             
       let scrollTop = window.scrollY;
       const body = document.body;
