@@ -3,9 +3,20 @@ import TliTopSection from "../components/topic-list-item/tli-top-section";
 import TliMiddleSection from "../components/topic-list-item/tli-middle-section";
 
 export default apiInitializer("1.8.0", (api) => {
-  // use getCurrentUser().site on current Discourse  
-  const site = api.getCurrentUser()?.site || api.container?.lookup("service:site") || 
-              api.lookup("service:site") || api.container.lookup("site:main");
+  // try to get site service safely
+  let site;
+  try {
+    site = api.getCurrentUser()?.site;
+    if (!site && api.container) {
+      site = api.container.lookup("service:site");
+    }
+    if (!site && api.lookup) {
+      site = api.lookup("service:site");
+    }
+  } catch (e) {
+    // fallback if all methods fail
+    site = { useGlimmerTopicList: true };
+  }
 
   // Glimmer topic list is the default now
   if (site?.useGlimmerTopicList) {

@@ -5,8 +5,19 @@ export default {
 
   initialize() {
     withPluginApi("0.8.13", (api) => {
-      const site = api.getCurrentUser()?.site || api.container?.lookup("service:site") || 
-                  api.lookup("service:site") || api.container?.lookup("site:main");
+      let site;
+      try {
+        site = api.getCurrentUser()?.site;
+        if (!site && api.container) {
+          site = api.container.lookup("service:site");
+        }
+        if (!site && api.lookup) {
+          site = api.lookup("service:site");
+        }
+      } catch (e) {
+        // assume desktop if we can't determine
+        site = { mobileView: false };
+      }
       if (!site || !site.mobileView) return;
             
       let scrollTop = window.scrollY;

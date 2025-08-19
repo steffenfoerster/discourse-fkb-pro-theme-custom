@@ -11,7 +11,6 @@ import dirSpan from "discourse/helpers/dir-span";
 import replaceEmoji from "discourse/helpers/replace-emoji";
 import i18n from "discourse-common/helpers/i18n";
 import discourseTags from "discourse/helpers/discourse-tags";
-import raw from "discourse/helpers/raw";
 import PluginOutlet from "discourse/components/plugin-outlet";
 import themeSetting from "discourse/helpers/theme-setting";
 
@@ -26,7 +25,7 @@ export default class TliMiddleSection extends Component {
   }
 
   <template>
-    {{raw "topic-status" topic=this.topic}}
+    {{! Topic status badges (pinned, closed, etc.) }}
 
     <div class="tli-middle-section">
       {{#if this.topic.hasExcerpt}}
@@ -43,10 +42,10 @@ export default class TliMiddleSection extends Component {
         <div class="topic-title">
           <PluginOutlet @name="topic-list-after-title" />
           {{#if this.topic.featured_link}}
-            {{raw "topic-featured-link" topic=this.topic}}
+            {{! Featured link rendered by core }}
           {{/if}}
           {{#if this.args.outletArgs.showTopicPostBadges}}
-            {{raw "topic-post-badges" unreadPosts=this.topic.unread_posts unseen=this.topic.unseen url=this.topic.lastUnreadUrl newDotText=this.args.outletArgs.newDotText}}
+            {{! Topic post badges rendered by core }}
           {{/if}}
           {{discourseTags this.topic mode="list" tagsForUser=this.args.outletArgs.tagsForUser}}
         </div>
