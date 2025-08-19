@@ -4,7 +4,7 @@ import UserLink from "discourse/components/user-link";
 import avatar from "discourse/helpers/avatar";
 import formatDate from "discourse/helpers/format-date";
 import categoryLink from "discourse/helpers/category-link";
-import themeI18n from "discourse/helpers/theme-i18n";
+import i18n from "discourse-common/helpers/i18n";
 import PluginOutlet from "discourse/components/plugin-outlet";
 
 export default class TliTopSection extends Component {
@@ -18,6 +18,10 @@ export default class TliTopSection extends Component {
 
   get bulkCheckboxId() {
     return `bulk-select-${this.topic?.id}`;
+  }
+
+  get firstPoster() {
+    return this.topic?.posters?.[0]?.user;
   }
 
   <template>
@@ -42,19 +46,20 @@ export default class TliTopSection extends Component {
       </div>
       <div class="tli-top-section__author">
         <PluginOutlet @name="topic-list-before-status" />
-        <UserLink @user={{get this.topic.posters "0.user"}}>
-          <div class="topic-list-avatar">          
-            {{avatar (get this.topic.posters "0.user") imageSize="large"}}
-            <div class="name-and-date">
-              <span class="full-name-tlist">{{get (get this.topic.posters "0.user") "name"}}</span>
-              <span class="username">{{get (get this.topic.posters "0.user") "username"}}</span>
-              <span class="list-date">
-                {{themeI18n "created_at"}} 
-                {{formatDate this.topic.createdAt format="tiny"}}
-              </span>
+        {{#if this.firstPoster}}
+          <UserLink @user={{this.firstPoster}}>
+            <div class="topic-list-avatar">          
+              {{avatar this.firstPoster imageSize="large"}}
+              <div class="name-and-date">
+                <span class="full-name-tlist">{{this.firstPoster.name}}</span>
+                <span class="username">{{this.firstPoster.username}}</span>
+                <span class="list-date">
+                  Created {{formatDate this.topic.createdAt format="tiny"}}
+                </span>
+              </div>
             </div>
-          </div>
-        </UserLink>
+          </UserLink>
+        {{/if}}
       </div>
     </div>
   </template>
