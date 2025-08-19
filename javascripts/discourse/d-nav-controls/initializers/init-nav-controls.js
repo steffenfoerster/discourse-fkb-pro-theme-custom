@@ -4,6 +4,9 @@ export default {
   name: "discourse-navigation-controls",
 
   initialize() {
+    console.log("FKB Theme: Navigation controls initializer loaded");
+    // Temporarily disable to test basic loading
+    /*
     withPluginApi("0.8.13", (api) => {
       // Only run on mobile - assume desktop if we can't determine
       const isMobile = window.innerWidth <= 768; // Basic mobile detection
@@ -35,5 +38,6 @@ export default {
         lastScrollTop = scrollTop;
       });
     });
+    */
   },
 };

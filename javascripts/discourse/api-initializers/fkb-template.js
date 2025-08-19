@@ -1,8 +1,13 @@
 import { apiInitializer } from "discourse/lib/api";
-import TliTopSection from "../components/topic-list-item/tli-top-section";
-import TliMiddleSection from "../components/topic-list-item/tli-middle-section";
+// Temporarily comment out imports to test basic loading
+// import TliTopSection from "../components/topic-list-item/tli-top-section";
+// import TliMiddleSection from "../components/topic-list-item/tli-middle-section";
 
 export default apiInitializer("1.8.0", (api) => {
+  console.log("FKB Theme: API initializer loaded successfully");
+  
+  // Temporarily disable all functionality to test basic loading
+  /*
   // Assume Glimmer topic list is enabled in modern Discourse
   const useGlimmerTopicList = true;
 
@@ -35,6 +40,7 @@ export default apiInitializer("1.8.0", (api) => {
       }
     }
   );
+  */
 
   api.onPageChange(() => {
     const fkbHidden = localStorage.getItem("fkb_panel_hidden") === "true";

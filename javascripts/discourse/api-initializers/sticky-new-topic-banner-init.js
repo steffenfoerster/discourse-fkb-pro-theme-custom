@@ -1,9 +1,12 @@
 import { apiInitializer } from "discourse/lib/api";
-import { action } from "@ember/object";
-import { popupAjaxError } from "discourse/lib/ajax-error";
+// Temporarily comment out imports to test basic loading
+// import { action } from "@ember/object";
+// import { popupAjaxError } from "discourse/lib/ajax-error";
 
 export default apiInitializer("1.8.0", (api) => {
-  
+  console.log("FKB Theme: Sticky banner initializer loaded");
+  // Temporarily disable all functionality to test basic loading
+  /*
   // Sticky New Topic Banner Latest
   api.modifyClass(
     "component:discovery/topics",
@@ -79,4 +82,5 @@ export default apiInitializer("1.8.0", (api) => {
         }
       }
   );
+  */
 });

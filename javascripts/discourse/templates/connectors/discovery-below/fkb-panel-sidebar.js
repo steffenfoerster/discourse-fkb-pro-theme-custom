@@ -4,6 +4,9 @@ import { getURLWithCDN } from "discourse-common/lib/get-url";
 
 export default {
   setupComponent(attrs, component) {
+    console.log("FKB Theme: Panel sidebar connector loaded");
+    // Temporarily disable to test basic loading
+    /*
     withPluginApi("0.8.7", (api) => {
       // Only run on desktop - assume desktop if we can't determine
       const isDesktop = window.innerWidth > 768; // Basic desktop detection
@@ -43,5 +46,6 @@ export default {
         });
       }
     });
+    */
   },
 };
