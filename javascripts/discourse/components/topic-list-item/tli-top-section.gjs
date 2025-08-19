@@ -8,7 +8,6 @@ import themeI18n from "discourse/helpers/theme-i18n";
 import PluginOutlet from "discourse/components/plugin-outlet";
 
 export default class TliTopSection extends Component {
-  
   get topic() {
     return this.args.outletArgs.topic;
   }
@@ -17,13 +16,17 @@ export default class TliTopSection extends Component {
     return !!(this.args.outletArgs && this.args.outletArgs.bulkSelectEnabled);
   }
 
+  get bulkCheckboxId() {
+    return `bulk-select-${this.topic?.id}`;
+  }
+
   <template>
     <PluginOutlet @name="topic-list-before-columns" />
 
     {{#if this.bulkSelectEnabled}}
       <div class="bulk-select topic-list-data">
-        <label for="bulk-select-{{this.topic.id}}">
-          <input type="checkbox" class="bulk-select" id="bulk-select-{{this.topic.id}}">
+        <label for={{this.bulkCheckboxId}}>
+          <input type="checkbox" class="bulk-select" id={{this.bulkCheckboxId}}>
         </label>
       </div>
     {{/if}}
@@ -43,8 +46,8 @@ export default class TliTopSection extends Component {
           <div class="topic-list-avatar">          
             {{avatar (get this.topic.posters "0.user") imageSize="large"}}
             <div class="name-and-date">
-              <span class="full-name-tlist">{{(get this.topic.posters "0.user").name}}</span>
-              <span class="username">{{(get this.topic.posters "0.user").username}}</span>
+              <span class="full-name-tlist">{{get (get this.topic.posters "0.user") "name"}}</span>
+              <span class="username">{{get (get this.topic.posters "0.user") "username"}}</span>
               <span class="list-date">
                 {{themeI18n "created_at"}} 
                 {{formatDate this.topic.createdAt format="tiny"}}

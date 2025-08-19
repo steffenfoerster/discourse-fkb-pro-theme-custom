@@ -3,8 +3,8 @@ import TliTopSection from "../components/topic-list-item/tli-top-section";
 import TliMiddleSection from "../components/topic-list-item/tli-middle-section";
 
 export default apiInitializer("1.8.0", (api) => {
-  // use service:site on current Discourse
-  const site = api.container.lookup("service:site");
+  // use api.lookup on current Discourse
+  const site = api.lookup("service:site");
 
   // Glimmer topic list is the default now
   if (site.useGlimmerTopicList) {
