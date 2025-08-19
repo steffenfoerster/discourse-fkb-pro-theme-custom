@@ -10,7 +10,7 @@ import dirSpan from "discourse/helpers/dir-span";
 import i18n from "discourse-common/helpers/i18n";
 import discourseTags from "discourse/helpers/discourse-tags";
 import PluginOutlet from "discourse/components/plugin-outlet";
-import TopicLink from "discourse/components/topic-link";
+
 
 export default class TliMiddleSection extends Component {
   
@@ -37,7 +37,9 @@ export default class TliMiddleSection extends Component {
       
       <div class="link-middle-line">
         <div class="topic-title">
-          <TopicLink @topic={{this.topic}} />
+          <a href={{this.topic.url}} class="topic-link">
+            {{dirSpan this.topic.fancyTitle htmlSafe=true}}
+          </a>
           <PluginOutlet @name="topic-list-after-title" />
           {{#if this.topic.featured_link}}
             {{! Featured link rendered by core }}
