@@ -13,6 +13,7 @@ import i18n from "discourse-common/helpers/i18n";
 import discourseTags from "discourse/helpers/discourse-tags";
 import raw from "discourse/helpers/raw";
 import rawPluginOutlet from "discourse/helpers/raw-plugin-outlet";
+import themeSetting from "discourse/helpers/theme-setting";
 
 export default class TliMiddleSection extends Component {
   
@@ -40,7 +41,7 @@ export default class TliMiddleSection extends Component {
       {{/if}}
       <div id={{if this.topic.hasExcerpt "link-middle-line-excerpt" undefined}} class="link-middle-line">
         <div class="topic-title">
-          {{raw-plugin-outlet name="topic-list-after-title"}}
+          {{rawPluginOutlet name="topic-list-after-title"}}
           {{#if this.topic.featured_link}}
             {{raw "topic-featured-link" topic=this.topic}}
           {{/if}}
@@ -52,7 +53,7 @@ export default class TliMiddleSection extends Component {
         {{#if this.topic.image_url}}
           <a href="{{this.topic.lastUnreadUrl}}">
             <div class="topic-image">
-              {{#if (theme-setting "topic_image_backdrop")}}
+              {{#if (themeSetting "topic_image_backdrop")}}
                 <div class="topic-image__backdrop" style={{this.topicBackgroundStyle}} loading="lazy"></div>
               {{/if}}
               <img src="{{this.topic.image_url}}" class="topic-image__img" loading="lazy">

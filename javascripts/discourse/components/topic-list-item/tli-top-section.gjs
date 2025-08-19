@@ -6,6 +6,7 @@ import formatDate from "discourse/helpers/format-date";
 import categoryLink from "discourse/helpers/category-link";
 import i18n from "discourse-common/helpers/i18n";
 import rawPluginOutlet from "discourse/helpers/raw-plugin-outlet";
+import themePrefix from "discourse-common/helpers/theme-prefix";
 
 export default class TliTopSection extends Component {
   
@@ -18,7 +19,7 @@ export default class TliTopSection extends Component {
   }
 
   <template>
-    {{raw-plugin-outlet name="topic-list-before-columns"}}
+    {{rawPluginOutlet name="topic-list-before-columns"}}
 
     {{#if this.bulkSelectEnabled}}
       <div class="bulk-select topic-list-data">
@@ -32,13 +33,13 @@ export default class TliTopSection extends Component {
       <div class="tli-top-section__category">
         {{#unless this.topic.hideCategory}}
           {{#unless this.topic.isPinnedUncategorized}}
-            {{raw-plugin-outlet name="topic-list-before-category"}}
+            {{rawPluginOutlet name="topic-list-before-category"}}
             {{categoryLink this.topic.category}}
           {{/unless}}
         {{/unless}}
       </div>
       <div class="tli-top-section__author">
-        {{raw-plugin-outlet name="topic-list-before-status"}}
+        {{rawPluginOutlet name="topic-list-before-status"}}
         <UserLink @user={{get this.topic.posters "0.user"}}>
           <div class="topic-list-avatar">          
             {{avatar (get this.topic.posters "0.user") imageSize="large"}}
