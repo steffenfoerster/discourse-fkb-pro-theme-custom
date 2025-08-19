@@ -5,7 +5,8 @@ import { getURLWithCDN } from "discourse-common/lib/get-url";
 export default {
   setupComponent(attrs, component) {
     withPluginApi("0.8.7", (api) => {
-      const site = api.lookup("service:site");
+      const site = api.getCurrentUser()?.site || api.container?.lookup("service:site") || 
+                  api.lookup("service:site") || api.container?.lookup("site:main");
       if (!site?.mobileView) {
         // only run for logged-in users
         const current = api.getCurrentUser();

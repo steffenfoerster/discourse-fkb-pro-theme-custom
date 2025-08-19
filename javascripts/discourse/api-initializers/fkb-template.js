@@ -3,11 +3,12 @@ import TliTopSection from "../components/topic-list-item/tli-top-section";
 import TliMiddleSection from "../components/topic-list-item/tli-middle-section";
 
 export default apiInitializer("1.8.0", (api) => {
-  // use api.lookup on current Discourse
-  const site = api.lookup("service:site");
+  // use getCurrentUser().site on current Discourse  
+  const site = api.getCurrentUser()?.site || api.container?.lookup("service:site") || 
+              api.lookup("service:site") || api.container.lookup("site:main");
 
   // Glimmer topic list is the default now
-  if (site.useGlimmerTopicList) {
+  if (site?.useGlimmerTopicList) {
     if (!settings.disable_topic_list_modification) {
       api.registerValueTransformer("topic-list-item-mobile-layout", () => false);
     }

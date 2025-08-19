@@ -1,5 +1,5 @@
 import Component from "@glimmer/component";
-import get from "discourse-common/helpers/get";
+import { get } from "@ember/helper";
 import UserLink from "discourse/components/user-link";
 import avatar from "discourse/helpers/avatar";
 import formatDate from "discourse/helpers/format-date";
