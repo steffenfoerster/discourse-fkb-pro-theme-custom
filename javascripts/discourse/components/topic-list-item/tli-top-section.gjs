@@ -1,11 +1,11 @@
 import Component from "@glimmer/component";
-import { get } from "@ember/helper";
+import get from "discourse-common/helpers/get";
 import UserLink from "discourse/components/user-link";
 import avatar from "discourse/helpers/avatar";
 import formatDate from "discourse/helpers/format-date";
 import categoryLink from "discourse/helpers/category-link";
-import i18n from "discourse-common/helpers/i18n";
-import rawPluginOutlet from "discourse/helpers/raw-plugin-outlet";
+import themeI18n from "discourse/helpers/theme-i18n";
+import PluginOutlet from "discourse/components/plugin-outlet";
 
 export default class TliTopSection extends Component {
   
@@ -18,7 +18,7 @@ export default class TliTopSection extends Component {
   }
 
   <template>
-    {{rawPluginOutlet name="topic-list-before-columns"}}
+    <PluginOutlet @name="topic-list-before-columns" />
 
     {{#if this.bulkSelectEnabled}}
       <div class="bulk-select topic-list-data">
@@ -32,21 +32,21 @@ export default class TliTopSection extends Component {
       <div class="tli-top-section__category">
         {{#unless this.topic.hideCategory}}
           {{#unless this.topic.isPinnedUncategorized}}
-            {{rawPluginOutlet name="topic-list-before-category"}}
+            <PluginOutlet @name="topic-list-before-category" />
             {{categoryLink this.topic.category}}
           {{/unless}}
         {{/unless}}
       </div>
       <div class="tli-top-section__author">
-        {{rawPluginOutlet name="topic-list-before-status"}}
+        <PluginOutlet @name="topic-list-before-status" />
         <UserLink @user={{get this.topic.posters "0.user"}}>
           <div class="topic-list-avatar">          
             {{avatar (get this.topic.posters "0.user") imageSize="large"}}
             <div class="name-and-date">
-              <span class="full-name-tlist">{{this.topic.creator.name}}</span>
-              <span class="username">{{this.topic.creator.username}}</span>
+              <span class="full-name-tlist">{{(get this.topic.posters "0.user").name}}</span>
+              <span class="username">{{(get this.topic.posters "0.user").username}}</span>
               <span class="list-date">
-                {{i18n (themePrefix "created_at")}} 
+                {{themeI18n "created_at"}} 
                 {{formatDate this.topic.createdAt format="tiny"}}
               </span>
             </div>
