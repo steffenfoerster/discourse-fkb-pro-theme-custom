@@ -1,9 +1,9 @@
 import { apiInitializer } from "discourse/lib/api";
 
 export default apiInitializer("1.8.0", (api) => {  
-  const site = api.container.lookup("site:main");
+  const site = api.container.lookup("service:site");
 
-  if (!site.useGlimmerTopicList) {
+  if (!site || !site.useGlimmerTopicList) {
     document.body.classList.add("glimmer-topic-list-failed");
   }
 });
