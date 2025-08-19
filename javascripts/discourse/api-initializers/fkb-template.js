@@ -6,9 +6,7 @@ import { apiInitializer } from "discourse/lib/api";
 export default apiInitializer("1.8.0", (api) => {
   console.log("FKB Theme: API initializer loaded successfully");
   
-  // Temporarily disable all functionality to test basic loading
-  /*
-  // Assume Glimmer topic list is enabled in modern Discourse
+  // Re-enable basic topic list modifications without custom components
   const useGlimmerTopicList = true;
 
   // Glimmer topic list is the default now
@@ -27,10 +25,13 @@ export default apiInitializer("1.8.0", (api) => {
       return columns;
     });
 
+    // Temporarily comment out custom component rendering
+    /*
     if (!settings.disable_topic_list_modification) {
       api.renderInOutlet("topic-list-before-link", TliTopSection);
       api.renderInOutlet("topic-list-main-link-bottom", TliMiddleSection);
     }
+    */
   }
 
   api.modifyClass("component:discovery/topics", (Superclass) =>
@@ -40,7 +41,6 @@ export default apiInitializer("1.8.0", (api) => {
       }
     }
   );
-  */
 
   api.onPageChange(() => {
     const fkbHidden = localStorage.getItem("fkb_panel_hidden") === "true";
