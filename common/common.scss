@@ -1,0 +1,127 @@
+@import "var-mixin";
+@import "common/fkb-c-global";
+@import "common/fkb-c-input";
+@import "common/fkb-c-header";
+@import "common/fkb-c-sidebar";
+@import "common/fkb-c-login";
+@import "common/fkb-c-user";
+@import "common/fkb-c-search";
+@import "common/fkb-c-badges";
+@import "common/fkb-c-tags";
+
+@import "common/fkb-c-category";
+body:not(.glimmer-topic-list-failed) {
+  @import "common/fkb-c-topic-list";
+}
+body.glimmer-topic-list-failed {
+  @import "common/fkb-c-topic-list-no-glimmer";
+}
+@import "common/fkb-c-bulk-select";
+@import "common/fkb-c-bulk-select-no-glimmer";
+@import "common/fkb-c-topic";
+@import "common/fkb-c-private-message";
+@import "common/fkb-c-composer";
+@import "common/fkb-c-chat";
+@import "common/fkb-c-docs";
+@import "common/fkb-c-alternative-voting-category";
+@import "common/fkb-c-kanban";
+@import "common/fkb-c-search-banner";
+@import "common/fkb-c-modern-category";
+
+
+.category-heading {
+    display: none !important;
+}
+
+.navigation-categories .list-container, .categories-list .list-container {
+    padding-top: 0px !important;
+}
+
+.--no-topics-education+.topic-list-bottom .footer-message {
+    padding-top: 0.5em !important;
+}
+
+.footer-message h3 {
+    padding-left: 0.3em !important;
+}
+
+.md-table img.emoji.only-emoji {
+    margin: 0em 1em 0em 0em;
+}
+
+.md-table {
+    line-height: 2em;
+}
+
+.md-table td {
+    padding: 0.3em;
+}
+
+.about__main-content p {
+    line-height: 1.5em;
+}
+
+.about__main-content img.emoji {
+    margin-top: 1em;
+}
+
+.main-outlet .container {
+    background-color: #fafcff !important;
+    border-radius: 1em !important;
+    padding: 1em !important;
+}
+
+
+
+/* Edits to simplify composer */
+/* -------------------------- */
+.composer-action-title {
+  display: none !important;
+}
+
+
+/* Hide unnecessary editor buttons */
+/*.d-editor-button-bar button:not([title="Bold"]):not([title="Italic"]):not([title="Hyperlink"]):not([title="Upload"]) /*{
+/*    display: none !important;
+/*}
+
+
+/* Adjust editor height to avoid needing preview */
+.d-editor-textarea {
+    height: 500px !important;
+}
+
+/* Make the upload button bigger and central */
+.d-editor-button-bar button[title="Upload"] {
+    font-size: 1.2rem;
+    padding: 8px 12px;
+    background: #147efb;
+    color: white !important;
+    border-radius: 5px;
+}
+
+/* Right align the upload button */
+.d-editor-button-bar {
+    display: flex;
+    justify-content: right;
+    gap: 10px;
+}
+
+/* Prevent text area from being too cluttered */
+.d-editor-textarea {
+    font-size: 16px !important;
+    line-height: 1.6;
+}
+
+.btn.btn-default.no-text.mobile-file-upload {
+  font-size: 1.2rem;
+  padding: 8px 12px;
+  background: #147efb;
+  color: white !important;
+  border-radius: 5px;
+}
+
+.fa.d-icon.d-icon-upload.svg-icon.svg-string {
+    color: white !important;
+}
+

@@ -1,0 +1,37 @@
+@import "var-mixin";
+@import "mobile/fkb-m-header";
+@import "mobile/fkb-m-login";
+@import "mobile/fkb-m-user";
+@import "mobile/fkb-m-body-pages";
+@import "mobile/fkb-m-category";
+@import "mobile/fkb-m-topic-list";
+@import "mobile/fkb-m-sticky-new-topic-banner";
+@import "mobile/fkb-m-topic";
+@import "mobile/fkb-m-private-message";
+@import "mobile/fkb-m-composer";
+@import "mobile/fkb-m-docs";
+@import "mobile/fkb-m-chat";
+@import "mobile/fkb-m-f-nav";
+
+
+.topic-image {
+    margin-top: 20px;
+    height: 100% !important;
+}
+
+.topic-image img {
+    margin-top: 10px;
+    object-position: bottom !important;
+}
+
+
+.btn .btn-default .no-text .mobile-file-upload {
+  background-color: var(--tertiary) !important; /* Using !important to override any inline styles */
+  color: #ffffff !important;
+  width: 40px !important;
+  height: 40px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 4px !important;
+}

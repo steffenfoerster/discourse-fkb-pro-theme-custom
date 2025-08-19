@@ -1,0 +1,119 @@
+// FKBC - Global
+
+// Global
+
+body {
+  background: var(--fkb-bg);
+}
+
+// Resets the Versatille banner modified width on main-outlet
+#main > div #main-outlet {
+  max-width: 100%;
+  width: 100%;
+}
+
+img.avatar,
+.card-avatar-placeholder,
+.placeholder-avatar {
+  border-radius: var(--d-avatar-border-radius);
+}
+
+.fk-d-toasts {
+  .fk-d-toast {
+    border-radius: var(--d-default-border-radius);
+  }
+}
+
+.tippy-box {
+  border-radius: calc(var(--d-default-border-radius) / 2);
+}
+
+.popup-tip {
+  border-radius: var(--d-default-border-radius);
+}
+
+.btn.show-summary {
+  background: var(--fkb-btn);
+}
+
+.btn-default {
+  background: var(--fkb-btn);
+}
+
+.list-controls .combo-box .combo-box-header {
+  background: var(--secondary);
+}
+
+// Spinner
+
+.spinner {
+  height: 40px;
+  width: 40px;
+  border: none;
+  box-shadow: inset 0 1px 1px var(--tertiary);
+}
+
+// Banner
+
+.alert.alert-info {
+  background: var(--tertiary-500);
+  border-radius: var(--d-default-border-radius);
+}
+
+#banner {
+  background: var(--tertiary-low);
+  border-radius: var(--d-default-border-radius);
+  .lightbox-wrapper,
+  .lightbox-wrapper a.lightbox,
+  .lightbox-wrapper img {
+    border-radius: var(--d-default-border-radius);
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+.navigation-topics,
+.navigation-categories,
+.category {
+  .alert.alert-info {
+    box-sizing: border-box;
+    margin: 0 auto 1em;
+  }
+}
+
+// Modal
+// Modal Global
+
+.dialog-content {
+  border-radius: var(--d-default-border-radius);
+  outline: 0;
+}
+
+.d-modal {
+  &__container {
+    border-radius: var(--d-default-border-radius);
+    .mobile-view & {
+      border-radius: var(--d-default-border-radius) var(--d-default-border-radius) 0 0;
+    }
+  }
+}
+
+.modal.has-tabs {
+  .modal-tabs {
+    .modal-tab {
+      border-radius: var(--d-default-border-radius);
+    }
+  }
+}
+
+// Admin
+
+.admin-controls .nav-pills > li a.active {
+  background: transparent;
+}
+
+.boxed.white {
+  padding: 1em;
+  box-sizing: border-box;
+  @include bg-br;
+}
