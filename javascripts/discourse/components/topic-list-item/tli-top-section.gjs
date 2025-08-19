@@ -5,6 +5,7 @@ import avatar from "discourse/helpers/avatar";
 import formatDate from "discourse/helpers/format-date";
 import categoryLink from "discourse/helpers/category-link";
 import i18n from "discourse-common/helpers/i18n";
+import rawPluginOutlet from "discourse/helpers/raw-plugin-outlet";
 
 export default class TliTopSection extends Component {
   

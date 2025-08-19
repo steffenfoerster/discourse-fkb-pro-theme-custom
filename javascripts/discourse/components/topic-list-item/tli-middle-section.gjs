@@ -11,6 +11,8 @@ import dirSpan from "discourse/helpers/dir-span";
 import replaceEmoji from "discourse/helpers/replace-emoji";
 import i18n from "discourse-common/helpers/i18n";
 import discourseTags from "discourse/helpers/discourse-tags";
+import raw from "discourse/helpers/raw";
+import rawPluginOutlet from "discourse/helpers/raw-plugin-outlet";
 
 export default class TliMiddleSection extends Component {
   
