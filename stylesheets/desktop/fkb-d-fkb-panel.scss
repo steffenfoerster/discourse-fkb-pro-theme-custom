@@ -207,7 +207,7 @@
 
 // FKBD - Right Sidebar Blocks below FKB Panel
 
-@if $right-sidebar-below-fkb-panel == "true" {
+@if $right_sidebar_below_fkb_panel == "true" {
   .list-container {
     .full-width {
       #list-area {
@@ -232,7 +232,7 @@
       max-width: var(--d-sidebar-width);
       width: 100%;
       
-      @if $right-sidebar-blocks-expanded == "false" {
+      @if $right_sidebar_blocks_expanded == "false" {
         position: sticky;
         top: calc(var(--header-offset) + 2em);
         @include bg-br;
@@ -242,7 +242,7 @@
       }
       
       .rs-component {
-        @if $right-sidebar-blocks-expanded == "true" {
+        @if $right_sidebar_blocks_expanded == "true" {
           @include bg-br;
           padding: 1em;
           

@@ -90,7 +90,7 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
     @media screen and (max-width: 1100px) {
       gap: 0;
     }
-    @if $right-sidebar-blocks-enabled == "true" {
+    @if $right_sidebar_blocks_enabled == "true" {
       gap: 0;
     }
     .above-main-container-outlet {
@@ -127,7 +127,7 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
       @media screen and (max-width: 1099px) {
         display: none;
       }
-      @if $right-sidebar-blocks-enabled == "true" {
+      @if $right_sidebar_blocks_enabled == "true" {
         display: none;
       }
     }
@@ -163,7 +163,7 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
     @media screen and (max-width: 1100px) {
       margin-right: 2em;
     }
-    @if $right-sidebar-blocks-enabled == "true" {
+    @if $right_sidebar_blocks_enabled == "true" {
       margin-right: 2em;
     }    
     @media screen and (max-width: 800px) {

@@ -2,7 +2,7 @@
 
 // Topic List
 
-@if $disable-topic-list-modification == "false" {
+@if $disable_topic_list_modification == "false" {
 
   table.topic-list:not(.bookmark-list) {
     tbody.topic-list-body {
@@ -80,7 +80,7 @@
           justify-content: right;
           .badge-category__wrapper {
             margin: 0 0.5em -1em auto;
-            @if $category-badge-style == "box" {
+            @if $category_badge_style == "box" {
               margin: -1.25em 0.5em -1em auto;
               .badge-category {
                 border-radius: 0 0 calc(var(--d-default-border-radius) * 0.75) calc(var(--d-default-border-radius) * 0.75);
@@ -337,7 +337,7 @@
   }
 }
 
-@if $disable-topic-list-modification == "true" {
+@if $disable_topic_list_modification == "true" {
   .topic-list {
     .topic-list-item-separator {
       .topic-list-data {
