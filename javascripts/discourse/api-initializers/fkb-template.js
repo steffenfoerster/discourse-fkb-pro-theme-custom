@@ -1,7 +1,7 @@
 import { apiInitializer } from "discourse/lib/api";
-// Test importing just one component first
+// Test importing both components now
 import TliTopSection from "../components/topic-list-item/tli-top-section";
-// import TliMiddleSection from "../components/topic-list-item/tli-middle-section";
+import TliMiddleSection from "../components/topic-list-item/tli-middle-section";
 
 export default apiInitializer("1.8.0", (api) => {
   console.log("FKB Theme: API initializer loaded successfully");
@@ -25,11 +25,11 @@ export default apiInitializer("1.8.0", (api) => {
       return columns;
     });
 
-    // Test rendering just the top section component
+    // Test rendering both components
     if (!settings.disable_topic_list_modification) {
-      console.log("FKB Theme: Attempting to render TliTopSection");
+      console.log("FKB Theme: Attempting to render both components");
       api.renderInOutlet("topic-list-before-link", TliTopSection);
-      // api.renderInOutlet("topic-list-main-link-bottom", TliMiddleSection);
+      api.renderInOutlet("topic-list-main-link-bottom", TliMiddleSection);
     }
   }
 
