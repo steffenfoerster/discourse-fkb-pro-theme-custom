@@ -1,4 +1,4 @@
-@if $disable_topic_list_modification == "false" {
+@if $disable_topic_list_modification == false {
   .navigation-topics,
   .user-messages-page,
   body[class*="tag-"]:not(.archetype-regular):not(.archetype-banner),

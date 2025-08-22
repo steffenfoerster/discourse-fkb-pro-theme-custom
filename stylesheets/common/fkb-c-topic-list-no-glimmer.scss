@@ -2,7 +2,7 @@
 
 // Topic List
 
-@if $disable_topic_list_modification == "false" {
+@if $disable_topic_list_modification == false {
   .topic-list-main-link a.title,
   .topic-list .main-link a.title,
   .latest-topic-list-item .main-link a.title {
@@ -298,7 +298,7 @@
   }
 }
 
-@if $disable_topic_list_modification == "true" {
+@if $disable_topic_list_modification == true {
   .topic-list {
     .topic-list-item-separator {
       .topic-list-data {
